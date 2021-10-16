@@ -1,0 +1,26 @@
+[user]
+	name = Grant Lemoine
+	email = glemoine@intouchinsight.com
+[color]
+	ui = true
+[alias]
+	co = checkout
+	br = branch
+	ci = "!git add -A && git commit -m "
+	st = status
+	amend = !git add -A && git commit --amend --no-edit
+	rb-st = "!git co staging && git pull && git co - && git rebase -i origin/staging"
+	rb-ma = "!git co master && git pull && git co - && git rebase -i origin/master"
+	ship = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
+	fship = "!git push -f origin $(git rev-parse --abbrev-ref HEAD)"
+	branch-name = "!git rev-parse --abbrev-ref HEAD"
+	mkstaging = "!( git branch -D $(git branch-name)_STAGING || true ) && git checkout staging && git pull && git checkout - && git checkout -b $(git branch-name)_STAGING && git rebase -i origin/staging"
+	mr = ""!sh ~/git-create-mr.sh""
+	master = "!git co master && git pull"
+	staging = "!git co staging && git pull"
+	rev = "revert -m 1"
+	rev-staging = "git staging && git revert -m 1"
+[core]
+	excludesfile = /Users/glemoine/.gitignore_global
+[pull]
+	rebase = false
